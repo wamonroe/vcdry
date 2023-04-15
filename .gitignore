@@ -1,0 +1,34 @@
+# Ignore gem related files
+/.bundle
+/.yardoc
+/_yardoc/
+/doc/
+/pkg/
+/tmp/
+
+# Allow the gem to be tested in multiple environments
+Gemfile.lock
+.tool-versions
+.ruby-version
+
+# Ignore testing related files
+/coverage/
+/spec/examples.txt
+/spec/dummy/log/*
+/spec/dummy/tmp/*
+!/spec/dummy/log/.keep
+!/spec/dummy/tmp/.keep
+/spec/dummy/tmp/pids/*
+!/spec/dummy/tmp/pids/
+!/spec/dummy/tmp/pids/.keep
+/spec/dummy/storage/*
+!/spec/dummy/storage/.keep
+/spec/dummy/tmp/storage/*
+!/spec/dummy/tmp/storage/
+!/spec/dummy/tmp/storage/.keep
+/spec/dummy/public/assets
+/spec/dummy/config/master.key
+/spec/dummy/app/assets/builds/*
+!/spec/dummy/app/assets/builds/.keep
+/spec/dummy/node_modules
+/spec/reports/

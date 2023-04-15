@@ -1,0 +1,6 @@
+<% instance_variables.each do |instance_variable| %>
+  <div data-instance-variable="<%= instance_variable %>">
+    <div data-qa="instance-variable-name"><%= instance_variable %></div>
+    <div data-qa="instance-variable-value"><%= instance_variable_get(:@test).inspect %></div>
+  </div>
+<% end %>
