@@ -1,5 +1,9 @@
 name: Test
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "10 15 * * 0" # every sunday at 15:10 UTC
 jobs:
   test:
     name: Ruby ${{ matrix.ruby }}, Rails ${{ matrix.rails }}, ViewComponent ${{matrix.view_component}}
@@ -15,10 +19,9 @@ jobs:
           - "latest"
         view_component:
           - "2.35.0"
-          - "2.45.0"
           - "2.55.0"
-          - "2.65.0"
           - "2.75.0"
+          - "2.80.0"
           - "latest"
     runs-on: ubuntu-latest
     env:

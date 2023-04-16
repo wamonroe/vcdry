@@ -32,3 +32,4 @@ Gemfile.lock
 !/spec/dummy/app/assets/builds/.keep
 /spec/dummy/node_modules
 /spec/reports/
+/spec/dummy/db/test.sqlite3
