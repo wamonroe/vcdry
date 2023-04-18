@@ -48,7 +48,7 @@ module VCDry
     end
 
     def optional?
-      default? || !!@options[:optional]
+      default? || @options[:optional]
     end
 
     def required?
@@ -72,6 +72,7 @@ module VCDry
     def type_cast_value(value)
       return if value == NOT_DEFINED
       return value if @type.nil?
+      return if value.nil? && @options[:optional]
 
       value = @type.call(value)
       if enum? && enum_values.exclude?(value)
