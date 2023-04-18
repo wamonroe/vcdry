@@ -22,8 +22,6 @@ gemspec
 
 gem "pry-byebug"
 gem "rake"
-gem "simplecov", require: false
-gem "rspec-rails"
 
 # Code formating and linting
 gem "erb_lint"
@@ -31,3 +29,10 @@ gem "htmlbeautifier"
 gem "rubocop-rails"
 gem "rubocop-rspec"
 gem "standard"
+
+# Testing
+gem "capybara"
+gem "selenium-webdriver"
+gem "simplecov", require: false
+gem "rspec-rails"
+gem "webdrivers"

@@ -40,6 +40,7 @@ module VCDry
 
       def inherited(subclass)
         subclass.instance_variable_set(:@vcdry, @vcdry&.dup)
+        super
       end
 
       def keyword(name, type = nil, **options)

@@ -9,6 +9,8 @@ require "rspec/rails"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 require "view_component"
+require "view_component/test_helpers"
+require "capybara/rspec"
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -34,4 +36,9 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
+
+  # ViewComponent tests
+  config.include ViewComponent::TestHelpers, type: :component
+  config.include ViewComponent::SystemTestHelpers, type: :component
+  config.include Capybara::RSpecMatchers, type: :component
 end
