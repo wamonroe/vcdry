@@ -38,7 +38,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   # ViewComponent tests
-  config.include ViewComponent::TestHelpers, type: :component
-  config.include ViewComponent::SystemTestHelpers, type: :component
+  if defined?(ViewComponent::SystemTestHelpers)
+    config.include ViewComponent::SystemTestHelpers, type: :component
+  else
+    config.include ViewComponent::TestHelpers, type: :component
+  end
   config.include Capybara::RSpecMatchers, type: :component
 end
