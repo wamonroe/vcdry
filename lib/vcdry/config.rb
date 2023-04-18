@@ -13,6 +13,12 @@ module VCDry
       @name = name.to_sym
       @type = (type.nil? || type.respond_to?(:call)) ? type : VCDry::Types[type]
       @options = options
+
+      # Translate default: nil to optional: true
+      if @options.key?(:default) && @options[:default].nil?
+        @options.delete(:default)
+        @options[:optional] = true
+      end
     end
 
     def array?
