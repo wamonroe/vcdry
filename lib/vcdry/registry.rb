@@ -41,7 +41,7 @@ module VCDry
       @keywords.keys
     end
 
-    def other_keywords(name, type: :hash)
+    def other_keywords(name, type = :hash)
       @other_keywords_config = Config.new(name, type)
     end
 
