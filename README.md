@@ -40,6 +40,7 @@ end
     - [other_keywords](#other_keywords)
     - [strict_keywords](#strict_keywords)
     - [remove_keyword](#remove_keyword)
+    - [Callbacks](#callbacks)
   - [Types](#types)
   - [Development](#development)
   - [Contributing](#contributing)
@@ -257,6 +258,25 @@ component, use the `remove_keyword` method.
 ```ruby
 class MyOtherComponent < MyComponent
   remove_keyword :name
+end
+```
+
+### Callbacks
+
+Including `VCDry::DSL` adds support through `ActiveModel::Callbacks` for the
+`before_initialize`, `after_initialization`, and `around_initialize` callbacks
+to minimize the need to override the initlialize method.
+
+```ruby
+class MyComponent < MyComponent
+  before_initialize ->() { @links = [] }
+  after_intialize :some_method
+
+  private
+
+  def some_method
+    # do something fancy
+  end
 end
 ```
 

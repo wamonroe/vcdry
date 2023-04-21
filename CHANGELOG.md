@@ -1,7 +1,6 @@
-## [Unreleased]
+## [1.0.1] - Unreleased
 
-## [1.0.1] - 2023-04-17
-
+- Added initializer callbacks.
 - Fix for `other_keywords` to accept the optional type as intended.
 - Fix for inheritance issues when including VCDry::DSL on a parent component.
 - Fix to allow passing `nil` to an optional keyword.

@@ -10,9 +10,12 @@ module VCDry
     extend ActiveSupport::Concern
 
     def initialize(**kwargs)
-      kwargs = kwargs.symbolize_keys
-      vcdry_parse_keywords(**kwargs)
-      vcdry_parse_unknown_keywords(**kwargs)
+      run_callbacks :initialize do
+        kwargs = kwargs.symbolize_keys
+        vcdry_parse_keywords(**kwargs)
+        vcdry_parse_unknown_keywords(**kwargs)
+        super
+      end
     end
 
     def vcdry_parse_keywords(**kwargs)
@@ -33,6 +36,12 @@ module VCDry
 
       config = self.class.vcdry.other_keywords_config
       instance_variable_set(config.instance_variable, config.type_cast(unknown_kwargs))
+    end
+
+    included do
+      extend ActiveModel::Callbacks
+
+      define_model_callbacks :initialize
     end
 
     class_methods do
