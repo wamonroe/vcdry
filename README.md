@@ -304,9 +304,13 @@ VCDry::Types.add_type(:custom_hash, ->(value) { CustomHash.new(value) })
 
 To mix-in the `keyword` behavior without using the `VCDry::DSL` (and its
 initialize method), you can call include `VCDry::Core` instead and then call
-`vcdry_parse` against the hash you wish to parse out keywords from.
+`vcdry_parse_keywords` against the hash you wish to parse out keywords from.
 
-> **Note**: Including `VCDry::Core` does not enable support for callbacks.
+The `vcdry_parse_keywords` accepts a hash and returns a hash of all key/value
+pairs that were not pulled out as a `keyword`.
+
+> **Note**: Including `VCDry::Core` does not include support for
+> `other_keywords`, `strict_keywords`, or enable support for callbacks.
 
 ```ruby
 class HeadingComponent
@@ -317,7 +321,7 @@ class HeadingComponent
 
   def initialize(text, **options)
     @text = text
-    vcdry_parse(options)
+    @options = vcdry_parse_keywords(options)
   end
 end
 ```

@@ -9,13 +9,8 @@ module VCDry
   module Core
     extend ActiveSupport::Concern
 
-    def vcdry_parse(kwargs = {})
-      kwargs = kwargs.symbolize_keys
-      vcdry_parse_keywords(kwargs)
-      vcdry_parse_unknown_keywords(kwargs)
-    end
-
     def vcdry_parse_keywords(kwargs = {})
+      kwargs = kwargs.symbolize_keys
       self.class.vcdry.keyword_configs.each do |config|
         if config.required? && !kwargs.key?(config.name)
           raise MissingRequiredKeywordError.new(config.name)
@@ -24,19 +19,11 @@ module VCDry
         value = kwargs.fetch(config.name, config.default)
         instance_variable_set(config.instance_variable, config.type_cast(value))
       end
-    end
-
-    def vcdry_parse_unknown_keywords(kwargs = {})
-      unknown_kwargs = kwargs.except(*self.class.vcdry.keywords)
-      raise UnknownArgumentError.new(*unknown_kwargs.keys) if self.class.vcdry.strict? && unknown_kwargs.present?
-      return unless self.class.vcdry.gather_unknown_keywords?
-
-      config = self.class.vcdry.other_keywords_config
-      instance_variable_set(config.instance_variable, config.type_cast(unknown_kwargs))
+      kwargs.except(*self.class.vcdry.keywords)
     end
 
     class_methods do
-      delegate :other_keywords, :remove_keyword, :strict_keywords, to: :vcdry
+      delegate :remove_keyword, to: :vcdry
 
       def inherited(subclass)
         subclass.instance_variable_set(:@vcdry, @vcdry&.dup)
