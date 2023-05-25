@@ -300,6 +300,28 @@ VCDry::Types.add_type(:boolean, ->(value) { ActiveRecord::Type::Boolean.new.cast
 VCDry::Types.add_type(:custom_hash, ->(value) { CustomHash.new(value) })
 ```
 
+## Mix-in Behavior
+
+To mix-in the `keyword` behavior without using the `VCDry::DSL` (and its
+initialize method), you can call include `VCDry::Core` instead and then call
+`vcdry_parse` against the hash you wish to parse out keywords from.
+
+> **Note**: Including `VCDry::Core` does not enable support for callbacks.
+
+```ruby
+class HeadingComponent
+  include VCDry::Core
+
+  keyword :size, :symbol, default: :md
+  other_keywords :options
+
+  def initialize(text, **options)
+    @text = text
+    vcdry_parse(options)
+  end
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run
