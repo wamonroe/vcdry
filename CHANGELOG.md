@@ -1,4 +1,4 @@
-## [1.1.0] - 2023-05-25
+## [1.1.1] - 2023-05-25
 
 - Breakout `VCDry::Core` from `VCDry::DSL` to better support mixing in `keyword`
   behavior in other gems like `vcfb`.
