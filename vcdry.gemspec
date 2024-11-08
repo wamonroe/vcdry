@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.description = spec.summary
   spec.homepage = "https://github.com/wamonroe/vcdry"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.0.0"
+  spec.required_ruby_version = ">= 3.1.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
     Dir["{app,config,db,lib}/**/*", "CHANGELOG.md", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
-  spec.add_dependency "rails", ">= 6.1", "< 8.0"
-  spec.add_dependency "view_component", ">= 2.35", "< 3.0"
+  spec.add_dependency "rails", ">= 7.0", "< 8.1"
+  spec.add_dependency "view_component", ">= 2.35", "< 4.0"
 
   spec.add_development_dependency "sqlite3"
 end
