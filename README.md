@@ -1,6 +1,10 @@
 # VCDry
 
-[![Test](https://github.com/wamonroe/vcdry/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/wamonroe/vcdry/actions/workflows/test.yml)
+> [!WARNING]
+> This gem is no longer maintained. With ViewComponent no longer seeing new
+> features, this project is not under active development. Bug fixes and pull
+> requests will not be reviewed or merged. Feel free to fork if you need
+> continued support.
 
 Simple DSL designed with [View Components](https://viewcomponent.org) in mind to
 make defining and setting keyword arguments and instance variables easier.
@@ -37,11 +41,12 @@ end
   - [General Usage](#general-usage)
     - [Overview](#overview)
     - [keyword](#keyword)
-    - [other_keywords](#other_keywords)
-    - [strict_keywords](#strict_keywords)
-    - [remove_keyword](#remove_keyword)
+    - [other\_keywords](#other_keywords)
+    - [strict\_keywords](#strict_keywords)
+    - [remove\_keyword](#remove_keyword)
     - [Callbacks](#callbacks)
   - [Types](#types)
+  - [Mix-in Behavior](#mix-in-behavior)
   - [Development](#development)
   - [Contributing](#contributing)
   - [License](#license)
